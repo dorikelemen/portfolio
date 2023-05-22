@@ -1,0 +1,599 @@
+/* stored colors */
+#root {
+  min-height: 100vh;
+}
+
+body {
+  --bottomBorder: rgba(255, 255, 255, 0.1);
+  --border: 1px solid #454545;
+  --containerBackgroundColor: rgba(255, 255, 255, 0.1);
+  --almostBlack: rgba(0, 0, 0, 0.15);
+  --lightBlack: rgba(0, 0, 0, 0.5);
+  --fullBlack: rgba(0, 0, 0);
+
+  /* font colors */
+  --lightWhite: rgba(255, 255, 255, 0.5);
+  --softWhite: rgba(255, 255, 255, 0.8);
+
+  /* box shadows */
+  --simpleShadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+
+  /* active */
+  --accentColor: #f7c548;
+  --secondaryAccentColor: #b4e7ce;
+}
+
+/* body */
+body {
+  background-color: #161616 !important;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  padding: 0;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.extended-body {
+  max-width: 1700px;
+  margin: auto;
+  padding: 15px;
+}
+
+body a {
+  text-decoration: none !important;
+}
+/* containers */
+.maxContainer {
+  width: 90%;
+  z-index: 10;
+  margin: auto;
+  padding: 3rem 0rem;
+  position: relative;
+  padding-left: 400px;
+  transition-duration: 0.7s;
+}
+
+.maxContainer h1,
+.extendedContainer h1 {
+  margin-bottom: 2.5rem;
+}
+
+.extendedContainer {
+  padding: 3rem 4rem;
+  padding-left: 320px;
+  margin: auto;
+  transition-duration: 0.5s;
+  transition-delay: 10ms;
+  position: relative;
+}
+
+.contentContainer {
+  background-color: var(--containerBackgroundColor);
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+  border-radius: 5px;
+  box-shadow: var(--simpleShadow);
+}
+
+/* menu component */
+
+.menuComponent {
+  position: fixed;
+  box-shadow: var(--simpleShadow);
+  height: 50px;
+  transition-delay: 200ms;
+  width: 50px;
+  transition-duration: 1s;
+  top: 75px;
+  margin-left: 350px;
+  transform: translate(-50%, -50%);
+  background-color: var(--secondaryAccentColor);
+  z-index: 35;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: ease-in-out 100ms;
+  transition-delay: 0.8s;
+  visibility: visible;
+  opacity: 1;
+}
+
+.menuComponent:hover {
+  opacity: 0.8;
+}
+
+.menuIcon {
+  position: absolute;
+  color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: ease-in-out 300ms;
+}
+
+.navigationIcon {
+  color: white;
+}
+
+.menuItemContainer {
+  width: 65px;
+  background-color: rgba(39, 39, 39, 0.6);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  transition: all ease-in-out 250ms;
+  margin-left: 285px;
+  top: 3rem;
+  position: fixed;
+  border-radius: 45px;
+  opacity: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.openMenu {
+  width: 60px;
+  top: 3rem;
+  opacity: 1;
+  margin-left: 350px;
+  z-index: 20;
+  position: fixed;
+  border: var(--border);
+}
+
+.menuOptions {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuOptions > a {
+  transition: ease-in-out 100ms;
+}
+
+.menuOptions > div a.active span,
+.menuOptions > div a.active:hover span {
+  background-color: var(--accentColor) !important;
+  transition: ease-in-out 100ms;
+  border-radius: 50%;
+  padding: 12px;
+  color: black;
+}
+
+.menuOptions a:hover span {
+  background-color: black;
+}
+
+.menuOptionsa a {
+  width: fit-content;
+}
+
+.menuOptions .menuLabels {
+  opacity: 0;
+  width: 0;
+  visibility: hidden;
+  transition-duration: 0.1s;
+  position: absolute;
+  z-index: 0;
+  padding: 0;
+  text-transform: uppercase;
+  top: 20px;
+  color: black;
+  font-size: 14px;
+  left: 65px;
+  background: var(--softWhite);
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.menuLabelContainer:hover .menuLabels {
+  opacity: 1;
+  padding: 4px 14px;
+  visibility: visible;
+  display: block;
+  width: fit-content;
+  z-index: 1;
+  left: 74px;
+}
+
+.menuLabels p {
+  padding: 0;
+  margin: 0;
+}
+.menuLabelContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+}
+
+.menuOptions span {
+  padding: 12px;
+  border-radius: 50%;
+  font-size: 25px;
+  color: var(--softWhite);
+  font-weight: 100;
+}
+
+.openMenu .menuOptions {
+  height: auto;
+  width: 100%;
+  opacity: 1;
+}
+
+.menuOptions a {
+  padding: 5px 0;
+  font-size: 16px;
+  display: block;
+  text-decoration: none;
+}
+
+/* expanded menu*/
+.expandedMenu {
+  position: fixed;
+  top: 3rem;
+  z-index: 30;
+  margin-left: 130px;
+  border: 1px solid var(--bottomBorder);
+  backdrop-filter: blur(10px);
+  background-color: rgba(39, 39, 39, 0.5);
+  opacity: 1;
+  transition: ease-in-out 700ms;
+}
+
+.menuItemContainer .extraMenuOptions {
+  display: none;
+  opacity: 0;
+  height: 0;
+}
+
+.expandedMenu .menuOptions {
+  opacity: 1;
+  height: 100%;
+}
+
+.expandedMenu .extraMenuOptions {
+  height: fit-content;
+  padding-top: 10px;
+  border-top: 1px solid var(--bottomBorder);
+  opacity: 1;
+  transition-duration: 0.5s;
+  display: flex;
+  width: fit-content;
+  padding-bottom: 10px;
+}
+
+.expandedMenu {
+  border-bottom: 1px solid var(--bottomBorder);
+  border-top: 0;
+  padding-top: 0 !important;
+  padding-bottom: 0;
+  margin-bottom: 0.5rem;
+}
+
+.hiddenExtraOptions {
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  padding-top: 0;
+  visibility: hidden;
+  position: relative;
+  display: none;
+  transition-duration: 300ms;
+}
+
+.hiddenExtraOptions .menuOptions a {
+  display: none;
+}
+
+/* hidden icon */
+.hiddenMenuIcon {
+  visibility: 0;
+  opacity: 0;
+  position: absolute;
+  height: 0;
+  z-index: 1;
+  margin-left: 310px;
+  transition-delay: 0s;
+  transition: ease-in-out 100ms;
+  transition-duration: 0.1s;
+}
+
+.hiddenMenuIcon span {
+  display: none;
+}
+
+/* scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* introtext */
+.introSection {
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+.introText {
+  font-size: 2.4rem;
+  font-weight: 100;
+  margin-bottom: 4rem;
+}
+
+.introText:first-child {
+  font-size: 9rem;
+  margin-bottom: 3rem;
+}
+
+/* buttons */
+.buttonContainer {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.buttonContainer span {
+  color: var(--secondaryAccentColor);
+}
+
+.socialmediaCont .socialLinks img {
+  border-radius: 0;
+  max-width: 60px;
+  cursor: pointer;
+  margin-left: 0;
+}
+
+.buttonContainer a {
+  text-decoration: none !important;
+}
+
+.contactButton {
+  background-color: var(--accentColor);
+  border: 1px solid var(--accentColor);
+  outline: 0 !important;
+  border-radius: 20px;
+  padding: 7px 20px;
+  width: fit-content;
+  top: 0;
+  position: relative;
+  transition: ease-in-out 100ms;
+  justify-content: center;
+  display: flex;
+  font-size: 14px;
+  text-transform: uppercase;
+  align-items: center;
+  color: black;
+  text-decoration: none !important;
+  margin: 3px;
+}
+
+.contactButton span {
+  margin-right: 10px;
+  color: black;
+}
+
+.simpleButton {
+  border: 1px solid var(--accentColor);
+  background: transparent;
+  outline: 0 !important;
+  text-decoration: none !important;
+  border-radius: 20px;
+  padding: 7px 20px;
+  width: 100%;
+  top: 0;
+  position: relative;
+  transition: ease-in-out 100ms;
+  justify-content: center;
+  display: flex;
+  font-size: 14px;
+  text-transform: uppercase;
+  align-items: center;
+  color: white;
+  margin: 3px;
+}
+
+.simpleButton:hover,
+.contactButton:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  top: -3px;
+  color: black;
+  border: 1px solid white;
+  background-color: white;
+}
+
+.textButton {
+  color: var(--accentColor);
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 5.5px;
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.textButton:hover {
+  background: rgba(247, 197, 72, 0.3);
+}
+
+/*swiper*/
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  border-radius: 50%;
+  background-color: #a0a0a0;
+  height: 40px !important;
+  width: 40px !important;
+  padding: 10px;
+  display: flex;
+  align-items: center !important;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  filter: opacity(0.7);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: unset !important;
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+.swiper-pagination-bullet {
+  height: 13px !important;
+  width: 13px !important;
+  margin: 10px 6px !important;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  z-index: 11;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--secondaryAccentColor) !important;
+}
+
+/* mui */
+.MuiSvgIcon-root {
+  fill: white !important;
+}
+
+/* contact */
+.contact .buttonContainer p {
+  color: var(--softWhite);
+}
+
+.contactFields {
+  flex-direction: column;
+}
+
+.contactBox {
+  margin: 0;
+  transition: ease-in-out 100ms;
+  transition-duration: 0.5s;
+  min-height: 400px;
+}
+
+.succeedForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out 100ms;
+  transition-duration: 0.5s;
+}
+
+.contactBox label {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 13px;
+  color: var(--lightWhite);
+}
+
+.contactBox input,
+.contactBox textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  height: 45px;
+  background-color: var(--softWhite);
+  outline: 0;
+  border: var(--border);
+  color: black;
+}
+
+.contactBox .mainMessage textarea {
+  height: 130px;
+  margin: 30px 0;
+  padding: 10px;
+}
+
+.contactBox input:focus,
+.contactBox .mainMessage textarea:focus {
+  border: 1px solid #ff4b00 !important;
+}
+
+.contactBox input::placeholder {
+  font-size: 13px;
+}
+
+.contactFields {
+  margin: 1rem 0;
+}
+
+.succeedForm span {
+  color: var(--secondaryAccentColor);
+  font-size: 3rem !important;
+  margin-bottom: 1.5rem;
+}
+
+.succeedForm p {
+  color: var(--softWhite);
+  font-size: 15px;
+}
+
+@media only screen and (max-width: 2000px) {
+  body {
+    height: 100%;
+  }
+
+  .maxContainer {
+    max-width: 2100px !important;
+    margin: auto;
+    display: block;
+  }
+}

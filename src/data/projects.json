@@ -1,0 +1,51 @@
+{
+  "projects": [
+    {
+      "id": 0,
+      "name": "Interactive Map Visualiser",
+      "image": "testimage1",
+      "date": "2023",
+      "company": "Ericsson",
+      "purpose": "Mobile World Congress",
+      "mainphoto": "success-case-visualiser-case-study",
+      "images": [
+        ["success-case-visualiser-map1"],
+        ["success-case-visualiser-map2"]
+      ],
+      "cardphoto": "test.jpg",
+      "category": "web",
+      "url": "interactive-map-visualiser",
+      "technologies": [["Figma"], ["React"], ["HTML5"], ["CSS3"], ["JS"]],
+      "description": "The network performance leadership viewer is an interactive visualization system which shows various successful cases. The user can the filter to select the topic of the case. When selected the filter on the map and a popup window appears with a preview of the case. The visitor can read the full text of the case on a separate page."
+    },
+    {
+      "id": 1,
+      "name": "Cisco Software Showcase",
+      "image": "cisco-home-page-desktop",
+      "company": "Lightware Visual Engineering",
+      "purpose": "Showcase company hardware collaboration with Cisco services",
+      "category": "web",
+      "mainphoto": "cisco-integration",
+      "date": "2022",
+      "url": "cisco-integration",
+      "images": [["cisco-home-page-desktop"], ["cisco-camera-share-desktop"]],
+      "cardphoto": "test.png",
+      "technologies": [["HTML"], ["CSS3"], ["JS"]],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+    },
+    {
+      "id": 2,
+      "name": "Event app",
+      "image": "cisco-home-page-desktop",
+      "date": "2020",
+      "category": "ui",
+      "url": "news-app",
+      "purpose": "Showcase company hardware collaboration with Cisco services",
+      "images": [["cisco-home-page-desktop"], ["cisco-camera-share-desktop"]],
+      "cardphoto": "test.jpg",
+      "mainphoto": "cisco-home-page-desktop",
+      "technologies": ["5G RAN", "Fixed Wireless Access"],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+    }
+  ]
+}
